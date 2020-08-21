@@ -3,7 +3,7 @@
 
     require __DIR__ .  '/vendor/autoload.php';
 
-    MercadoPago\SDK::setAccessToken("TEST-5904333508484678-062618-d0c6bacd170d4e658c10707a619dcc97-191741467");
+    MercadoPago\SDK::setAccessToken("APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398");
 
     $myfile = fopen("info.txt", "w") or die("Unable to open file!");
     $txt = json_encode($_REQUEST);
