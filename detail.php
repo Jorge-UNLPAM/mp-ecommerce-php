@@ -1,3 +1,67 @@
+<?php
+// SDK de Mercado Pago
+require __DIR__ .  '/vendor/autoload.php';
+
+// Credenciales
+MercadoPago\SDK::setAccessToken('TEST-5904333508484678-062618-d0c6bacd170d4e658c10707a619dcc97-191741467');
+//MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
+
+
+// Preferencia
+$preference = new MercadoPago\Preference();
+
+// Item
+$item = new MercadoPago\Item();
+$item->title = $_POST['title'];
+$item->quantity = $_POST['unit'];
+$item->unit_price = $_POST['price'];
+//$item->picture_url = $_POST['img'];
+$item->picture_url = 'https://lapaginamillonaria.com/__export/1591028049351/sites/lpm/img/2020/06/01/frases_gallardo_crop1591027519031.jpg_423682103.jpg';
+
+$preference->items = array($item);
+$preference->payment_methods = array(
+    "excluded_payment_methods" => array(
+        array("id" => "amex")
+    ),
+    "excluded_payment_types" => array(
+      array("id" => "atm")
+    ),
+    "installments" => 6
+);
+$preference->back_urls = array(
+    /*
+    "success" => "http://localhost/proyectos/mp-ecommerce-php/success_pay.php",
+    "failure" => "http://localhost/proyectos/mp-ecommerce-php/failure_pay.php",
+    "pending" => "http://localhost/proyectos/mp-ecommerce-php/pending_pay.php"
+    */
+    "success" => "/success_pay.php",
+    "failure" => "/failure_pay.php",
+    "pending" => "/pending_pay.php"
+);
+$preference->save();
+
+// Datos del pagador
+$payer = new MercadoPago\Payer();
+$payer->name = "Lalo";
+$payer->surname = "Landa";
+$payer->email = "test_user_63274575@testuser.com";
+
+$payer->phone = array(
+    "area_code" => "11",
+    "number" => "22223333"
+);
+
+$payer->identification = array(
+    "type" => "DNI",
+    "number" => "12345678"
+);
+
+$payer->address = array(
+    "street_name" => "False",
+    "street_number" => 123,
+    "zip_code" => "1111"
+);
+?>
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -130,7 +194,8 @@
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+
+                                    <a href="<?php echo $preference->init_point; ?>" class="mercadopago-button">Pagar con Mercado Pago</a>
                                 </div>
                             </div>
                         </div>
