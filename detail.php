@@ -59,7 +59,7 @@ $preference->back_urls          = array(
 
 $preference->external_reference = 'jormino78@gmail.com';
 
-$preference->notification_url   = 'https://jorgem-mp-ecommerce-php.herokuapp.com/notifications.php?source_news=webhooks';
+$preference->notification_url   = 'https://jorgem-mp-ecommerce-php.herokuapp.com/notifications.php';
 
 $preference->auto_return        = 'approved';
 
