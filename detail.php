@@ -157,21 +157,16 @@ $preference->save();
                         </div>
                         <div class="as-searchnav-placeholder" style="height: 77px;">
                             <div class="row as-search-navbar" id="as-search-navbar" style="width: auto;">
-                                <div class="as-accessories-filter-tile column large-6 small-3">
 
-                                    <button class="as-filter-button" aria-expanded="true" aria-controls="as-search-filters" type="button">
-                                        <h2 class=" as-filter-button-text">
-                                            Smartphones
-                                        </h2>
-                                    </button>
-
-                                </div>
+                                <h2 class=" as-filter-button-text" style="text-align: center; padding-top: 1%">
+                                    Tu compra
+                                </h2>
 
                             </div>
                         </div>
                         <div class="as-accessories-results  as-search-desktop">
-                            <div class="width:60%">
-                                <div class="as-producttile-tilehero with-paddlenav " style="float:left;">
+                            <div class="width:60%" style="margin-top: 10%">
+                                <div class="as-producttile-tilehero with-paddlenav " style="float:left;margin-left: 30%">
                                     <div class="as-dummy-container as-dummy-img">
 
                                         <img src="./assets/wireless-headphones" class="ir ir item-image as-producttile-image  " style="max-width: 70%;max-height: 70%;"alt="" width="445" height="445">
@@ -197,7 +192,7 @@ $preference->save();
 
                                 </div>
                                 <div class="as-producttile-info" style="float:left;min-height: 168px;">
-                                    <div class="as-producttile-titlepricewraper" style="min-height: 128px;">
+                                    <div class="as-producttile-titlepricewraper" style="min-height: 128px; margin-bottom: 10%">
                                         <div class="as-producttile-title">
                                             <h3 class="as-producttile-name">
                                                 <p class="as-producttile-tilelink">
@@ -207,14 +202,14 @@ $preference->save();
                                             </h3>
                                         </div>
                                         <h3 >
-                                            <?php echo $_POST['price'] ?>
+                                            <?php echo "$" . $_POST['price'] ?>
                                         </h3>
                                         <h3 >
-                                            <?php echo "$" . $_POST['unit'] ?>
+                                            Cantidad: <?php echo  $_POST['unit'] ?>
                                         </h3>
                                     </div>
 
-                                    <a href="<?php echo $preference->init_point; ?>" class="mercadopago-button">Pagar con Mercado Pago</a>
+                                    <a href="<?php echo $preference->init_point; ?>" class="mercadopago-button" style="padding: 10% 8% 10% 8%;">Pagar la compra</a>
                                 </div>
                             </div>
                         </div>

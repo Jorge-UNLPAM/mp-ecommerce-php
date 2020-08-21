@@ -37,6 +37,10 @@
             background: #333;
             color: #fff;
             padding: 16px 40px;
+            left: 0;
+            bottom: 0;
+            text-align: center;
+            margin-top: 5%;
         }
         a{
             text-decoration: none;
