@@ -11,7 +11,7 @@
     fclose($myfile);
 
     $myfile1 = fopen("info1.txt", "w") or die("Unable to open file!");
-    $txt1 = json_decode($_REQUEST);
+    $txt1 = json_encode($_REQUEST);
     fwrite($myfile1, $txt1);
     fclose($myfile1);
 
