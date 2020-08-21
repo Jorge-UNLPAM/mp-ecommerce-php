@@ -6,9 +6,14 @@
     MercadoPago\SDK::setAccessToken("APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398");
 
     $myfile = fopen("info.txt", "w") or die("Unable to open file!");
-    $txt = $_POST;
+    $txt = $_POST['type'];
     fwrite($myfile, $txt);
     fclose($myfile);
+
+    $myfile1 = fopen("info1.txt", "w") or die("Unable to open file!");
+    $txt1 = json_decode($_REQUEST);
+    fwrite($myfile1, $txt1);
+    fclose($myfile1);
 
     switch($_POST["type"]) {
         case "payment":
