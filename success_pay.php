@@ -12,6 +12,8 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
 
+    <script src="https://www.mercadopago.com/v2/security.js"></script>
+
     <link rel="stylesheet" href="./assets/category-landing.css" media="screen, print">
 
     <link rel="stylesheet" href="./assets/category.css" media="screen, print">
@@ -64,7 +66,11 @@
             </div>
             <div class="as-search-results as-filter-open as-category-landing as-desktop" id="as-search-results">
 
-                <?php echo $_GET['collection_id'] ?>
+                <div style="margin: 50%">
+                    <p>Collection: <?php echo $_GET['collection_id'] ?></p>
+                    <p>External: <?php echo $_GET['external_reference'] ?></p>
+                    <p>Payment method: <?php echo $_GET['payment_type'] ?></p>
+                </div>
 
             </div>
         </div>

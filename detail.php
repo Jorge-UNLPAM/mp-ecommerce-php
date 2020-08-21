@@ -6,17 +6,19 @@ require __DIR__ .  '/vendor/autoload.php';
 MercadoPago\SDK::setAccessToken('TEST-5904333508484678-062618-d0c6bacd170d4e658c10707a619dcc97-191741467');
 //MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
 
+MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 
 // Preferencia
 $preference = new MercadoPago\Preference();
 
 // Item
 $item = new MercadoPago\Item();
-$item->title = $_POST['title'];
+$item->id = '1234';
+$item->description = 'Dispositivo móvil de Tienda e-commerce';
+$item->picture_url = $_POST['img'];
 $item->quantity = $_POST['unit'];
+$item->title = $_POST['title'];
 $item->unit_price = $_POST['price'];
-//$item->picture_url = $_POST['img'];
-$item->picture_url = 'https://lapaginamillonaria.com/__export/1591028049351/sites/lpm/img/2020/06/01/frases_gallardo_crop1591027519031.jpg_423682103.jpg';
 
 $preference->items = array($item);
 $preference->payment_methods = array(
@@ -29,15 +31,22 @@ $preference->payment_methods = array(
     "installments" => 6
 );
 $preference->back_urls = array(
+    
     /*
     "success" => "http://localhost/proyectos/mp-ecommerce-php/success_pay.php",
     "failure" => "http://localhost/proyectos/mp-ecommerce-php/failure_pay.php",
     "pending" => "http://localhost/proyectos/mp-ecommerce-php/pending_pay.php"
     */
-    "success" => "/success_pay.php",
-    "failure" => "/failure_pay.php",
-    "pending" => "/pending_pay.php"
+
+    "success" => "https://jorgem-mp-ecommerce-php.herokuapp.com/success_pay.php",
+    "failure" => "https://jorgem-mp-ecommerce-php.herokuapp.com/failure_pay.php",
+    "pending" => "https://jorgem-mp-ecommerce-php.herokuapp.com/pending_pay.php"
+    
 );
+$preference->external_reference = 'jormino78@gmail.com';
+
+$preference->notification_url = 'https://jorgem-mp-ecommerce-php.herokuapp.com/notifications.php';
+
 $preference->save();
 
 // Datos del pagador
@@ -75,6 +84,8 @@ $payer->address = array(
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
+
+    <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
 
     <link rel="stylesheet" href="./assets/category-landing.css" media="screen, print">
 
@@ -144,7 +155,6 @@ $payer->address = array(
                                             Smartphones
                                         </h2>
                                     </button>
-
 
                                 </div>
 
