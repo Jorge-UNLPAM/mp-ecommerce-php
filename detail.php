@@ -12,15 +12,37 @@ $preference = new MercadoPago\Preference();
 
 // Item
 $item = new MercadoPago\Item();
-$item->id = '1234';
-$item->description = 'Dispositivo móvil de Tienda e-commerce';
-$item->picture_url = $_POST['img'];
-$item->quantity = $_POST['unit'];
-$item->title = $_POST['title'];
-$item->unit_price = $_POST['price'];
+$item->id           = '1234';
+$item->description  = 'Dispositivo móvil de Tienda e-commerce';
+$item->picture_url  = "https://jorgem-mp-ecommerce-php.herokuapp.com/".substr($_POST['img'], 1);
+$item->quantity     = $_POST['unit'];
+$item->title        = $_POST['title'];
+$item->unit_price   = $_POST['price'];
 
-$preference->items = array($item);
-$preference->payment_methods = array(
+// Datos del pagador
+$payer          = new MercadoPago\Payer();
+$payer->name    = "Lalo";
+$payer->surname = "Landa";
+$payer->email   = "test_user_63274575@testuser.com";
+
+$payer->phone           = array(
+    "area_code" => "11",
+    "number" => "22223333"
+);
+
+$payer->identification  = array(
+    "type" => "DNI",
+    "number" => "12345678"
+);
+
+$payer->address         = array(
+    "street_name" => "False",
+    "street_number" => 123,
+    "zip_code" => "1111"
+);
+
+$preference->items              = array($item);
+$preference->payment_methods    = array(
     "excluded_payment_methods" => array(
         array("id" => "amex")
     ),
@@ -29,38 +51,22 @@ $preference->payment_methods = array(
     ),
     "installments" => 6
 );
-$preference->back_urls = array(
+$preference->back_urls          = array(
     "success" => "https://jorgem-mp-ecommerce-php.herokuapp.com/success_pay.php",
     "failure" => "https://jorgem-mp-ecommerce-php.herokuapp.com/failure_pay.php",
     "pending" => "https://jorgem-mp-ecommerce-php.herokuapp.com/pending_pay.php"
 );
+
 $preference->external_reference = 'jormino78@gmail.com';
 
-$preference->notification_url = 'https://jorgem-mp-ecommerce-php.herokuapp.com/notifications.php?source_news=webhooks';
+$preference->notification_url   = 'https://jorgem-mp-ecommerce-php.herokuapp.com/notifications.php?source_news=webhooks';
+
+$preference->auto_return        = 'approved';
+
+$preference->payer              = $payer;
 
 $preference->save();
 
-// Datos del pagador
-$payer = new MercadoPago\Payer();
-$payer->name = "Lalo";
-$payer->surname = "Landa";
-$payer->email = "test_user_63274575@testuser.com";
-
-$payer->phone = array(
-    "area_code" => "11",
-    "number" => "22223333"
-);
-
-$payer->identification = array(
-    "type" => "DNI",
-    "number" => "12345678"
-);
-
-$payer->address = array(
-    "street_name" => "False",
-    "street_number" => 123,
-    "zip_code" => "1111"
-);
 ?>
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
