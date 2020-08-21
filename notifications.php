@@ -5,11 +5,6 @@
         $txt = file_get_contents('php://input');
         fwrite($myfile, $txt);
         fclose($myfile);
-    
-        $myfile1 = fopen("info1.txt", "w") or die("Unable to open file!");
-        $txt1 = json_encode($_REQUEST);
-        fwrite($myfile1, $txt1);
-        fclose($myfile1);
 
         http_response_code(200);
 
