@@ -66,7 +66,7 @@
             </div>
             <div class="as-search-results as-filter-open as-category-landing as-desktop" id="as-search-results">
 
-                <div style="margin: 50%">
+                <div style="margin-left: 50%; margin-top:5%">
                     <p>Collection: <?php echo $_GET['collection_id'] ?></p>
                     <p>External: <?php echo $_GET['external_reference'] ?></p>
                     <p>Payment method: <?php echo $_GET['payment_type'] ?></p>

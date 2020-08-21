@@ -30,18 +30,13 @@ $preference->payment_methods = array(
     "installments" => 6
 );
 $preference->back_urls = array(
-    /*
-    "success" => "http://localhost/proyectos/mp-ecommerce-php/success_pay.php",
-    "failure" => "http://localhost/proyectos/mp-ecommerce-php/failure_pay.php",
-    "pending" => "http://localhost/proyectos/mp-ecommerce-php/pending_pay.php"
-    */
     "success" => "https://jorgem-mp-ecommerce-php.herokuapp.com/success_pay.php",
     "failure" => "https://jorgem-mp-ecommerce-php.herokuapp.com/failure_pay.php",
     "pending" => "https://jorgem-mp-ecommerce-php.herokuapp.com/pending_pay.php"
 );
 $preference->external_reference = 'jormino78@gmail.com';
 
-$preference->notification_url = 'https://jorgem-mp-ecommerce-php.herokuapp.com/notifications.php';
+$preference->notification_url = 'https://jorgem-mp-ecommerce-php.herokuapp.com/notifications.php?source_news=webhooks';
 
 $preference->save();
 
